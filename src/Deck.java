@@ -23,10 +23,10 @@ public class Deck extends Stack<Card> {
 		}
 		
 		//Add 4 jokers
-		add(new Card(14,1));
-		add(new Card(14,1));
-		add(new Card(15,1));
-		add(new Card(15,1));
+		add(new Card(99,5));
+		add(new Card(99,5));
+		add(new Card(100,5));
+		add(new Card(100,5));
 		
 		Collections.shuffle(this);
 	}

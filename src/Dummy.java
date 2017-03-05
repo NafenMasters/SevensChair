@@ -28,13 +28,14 @@ public class Dummy implements Player {
 
 	@Override
 	public Combo play(Combo enemyCombo) {
+		
 		Combo c = new Combo();
 		c.add(handCards.get(getLeftNum()-1));
 		if(c.abs()>enemyCombo.abs()){
 			handCards.remove(getLeftNum()-1);
 			return c;
 		}
-		return null;
+		return new Combo();
 		
 	}
 

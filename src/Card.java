@@ -2,10 +2,10 @@
 public class Card {
 
 	private int number;
-	// 1-13: A-K 15:red joker 14:black joker 0:unspecified
+	// 1-13: A-K 100:red joker 99:black joker 0:unspecified
 	
 	private int suit;
-	// 1: heats  2:spades  3:diamonds  4:clubs
+	// 1: heats  2:spades  3:diamonds  4:clubs 5：joker
 	
 	public Card(int number, int suit) {
 		this.number = number;
@@ -43,9 +43,9 @@ public class Card {
 			break;
 			case 1: s += "A";
 			break;
-			case 14: s="jk";
+			case 99: s="jk";
 			break;
-			case 15: s="JK";
+			case 100: s="JK";
 			break;
 			
 			default: s += Integer.toString(number);
