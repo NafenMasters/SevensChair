@@ -20,25 +20,40 @@ public class Card {
 		return suit;
 	}
 
-	public String strNumber() {
-		switch(number) {
-			case 11: return "J";
-			case 12: return "Q";
-			case 13: return "K";
-			case 1: return "A";
-			default: return Integer.toString(number);
+	@Override
+	public String toString() {
+		String s = null;
+		switch(suit) {
+		
+		case 1: s="♥";
+		break;
+		case 2: s="♠";
+		break;
+		case 3: s="♦";
+		break;
+		case 4: s="♣";
+		break;
 		}
+		switch(number) {
+			case 11: s += "J";
+			break;
+			case 12: s += "Q";
+			break;
+			case 13: s += "K";
+			break;
+			case 1: s += "A";
+			break;
+			case 14: s="jk";
+			break;
+			case 15: s="JK";
+			break;
+			
+			default: s += Integer.toString(number);
+		}
+		return s;
 	}
 
-	public char strSuit() {
-		switch(suit) {
-			case 0: return (char)'\u2660';
-			case 1: return (char)'\u2666';
-			case 2: return (char)'\u2663';
-			case 3: return (char)'\u2764';
-			default: return (char) 'a';
-		}
-	}
+	
 }
 
 

@@ -1,40 +1,55 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Stack;
 
-public class Deck {
+public class Deck extends Stack<Card> {
 
-	ArrayList cards;
+	//牌堆用栈来实现，这样发牌比较容易
 	
-	public void Deck(){
-		cards=new ArrayList();
-		for(int i=1;i<14;i++){
-			Card c= new Card(i, 1);
-			cards.add(c);
-			c= new Card(i, 2);
-			cards.add(c);
-			c= new Card(i, 3);
-			cards.add(c);
-			c= new Card(i, 4);
-			cards.add(c);
-			
-		}
-	}
-	
-	public void shuffle(){
+	//generate a shuffled 108 deck
+	public Deck(){
+		super();
 		
+		for(int i=1;i<14;i++){
+			
+			add(new Card(i, 1));
+			add(new Card(i, 1));
+			add(new Card(i, 2));
+			add(new Card(i, 2));
+			add(new Card(i, 3));
+			add(new Card(i, 3));
+			add(new Card(i, 4));
+			add(new Card(i, 4));
+		}
+		
+		//Add 4 jokers
+		add(new Card(14,1));
+		add(new Card(14,1));
+		add(new Card(15,1));
+		add(new Card(15,1));
+		
+		Collections.shuffle(this);
 	}
 	
 	public int getLeftNum(){
-		return cards.size();
+		return size();
 	}
 	
-	//make sure num<=leftnum
+	//发牌
 	public void deal(Player p, int num){
-		Card[] out;
-		int leftNum=this.getLeftNum();
-		for(int i=0;i<num; i++){
-			cards[leftNum-i-1]
-					cards.
+		
+		if(num > size()){
+			num=size();
 		}
-		p.startRound(cards[]);
+		
+		//要发出的牌
+		ArrayList<Card> giveout=new ArrayList();
+		
+		for(int i=0;i<num; i++){
+			giveout.add(pop());
+		}
+		
+		p.startRound(giveout);
+		
 	}
 }

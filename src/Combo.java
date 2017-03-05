@@ -1,23 +1,26 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Iterator;
 
 
-public class Combo {
-	Card[] cards;
-	
-	public Combo(){
-		
-	}
-	
-	public int getLength(){
-		return cards.length;
-	}
-	
-	public void addCard(Card c){
-		cards[cards.length]=c;
-	}
+
+
+public class Combo extends ArrayList<Card> {
 	
 	public void sort(){
-		Arrays.sort(cards, new CardComparator());
+		Collections.sort(this, new CardComparator());
 	}
+	
+	//evaluate the absolute value of this combo. If invalid return 0.
+	public int abs(){
+		return 0;
+	}
+	
+	//calculate points contained in this combo
+	public int points(){
+		return 0;
+	}
+	
+	
 }
