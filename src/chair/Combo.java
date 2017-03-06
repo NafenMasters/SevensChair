@@ -1,3 +1,4 @@
+package chair;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -169,6 +170,23 @@ public class Combo extends ArrayList<Card> {
 		return ps;
 	}
 	
+	//calculate joker points contained in this combo
+	public int jokerPoints(){
+			int jps=0;
+			for(int i=0;i<size();i++)
+				switch(get(i).getNumber()){
+				
+				case 99:
+					jps+=50;
+					break;
+				case 100:
+					jps+=100;
+					break;
+						
+				}
+			return jps;
+		}
+		
 	//转化为能表示大小的指标数
 	public int index(int num){
 		if(num==1)

@@ -1,3 +1,4 @@
+package chair;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Stack;
@@ -36,7 +37,7 @@ public class Deck extends Stack<Card> {
 	}
 	
 	//·¢ÅÆ
-	public void deal(Player p, int num){
+	public ArrayList<Card> deal(Player p, int num){
 		
 		if(num > size()){
 			num=size();
@@ -51,5 +52,6 @@ public class Deck extends Stack<Card> {
 		
 		p.startRound(giveout);
 		
+		return giveout;
 	}
 }

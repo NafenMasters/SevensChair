@@ -1,3 +1,4 @@
+package chair;
 import java.util.ArrayList;
 
 //A very stupid AI who only play one card each turn
@@ -8,6 +9,16 @@ public class Dummy implements Player {
 	private ArrayList<Card> handCards;
 	
 	private int points;
+	
+	private String myName;
+	
+	public Dummy(String name){
+		myName = name;
+	}
+	
+	public Dummy(){
+		myName = "Dummy";
+	}
 	
 	@Override
 	public void startGame(int order) {
@@ -60,6 +71,11 @@ public class Dummy implements Player {
 	@Override
 	public int getLeftNum() {
 		return handCards.size();
+	}
+
+	@Override
+	public String getName() {
+		return myName;
 	}
 
 }

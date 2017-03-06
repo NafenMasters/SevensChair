@@ -1,3 +1,4 @@
+package chair;
 import java.util.ArrayList;
 
 //1v1 AI player
@@ -21,5 +22,8 @@ public interface Player {
 	
 	//Get number of hand cards 
 	public int getLeftNum();
+	
+	//What's your name?
+	public String getName();
 	
 }

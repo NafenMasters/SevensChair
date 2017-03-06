@@ -1,11 +1,11 @@
-
+package chair;
 public class Card {
 
 	private int number;
 	// 1-13: A-K 100:red joker 99:black joker 0:unspecified
 	
 	private int suit;
-	// 1: heats  2:spades  3:diamonds  4:clubs 5：joker
+	// 1: heats  2:spades  3:diamonds  4:clubs 5:joker
 	
 	public Card(int number, int suit) {
 		this.number = number;
@@ -25,13 +25,13 @@ public class Card {
 		String s = null;
 		switch(suit) {
 		
-		case 1: s="♥";
+		case 1: s="h";
 		break;
-		case 2: s="♠";
+		case 2: s="s";
 		break;
-		case 3: s="♦";
+		case 3: s="d";
 		break;
-		case 4: s="♣";
+		case 4: s="c";
 		break;
 		}
 		switch(number) {
