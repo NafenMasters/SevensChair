@@ -6,11 +6,11 @@ import java.util.ArrayList;
 //    - One could develop strong AIs based on this one
 public class Dummy implements Player {
 
-	private ArrayList<Card> handCards;
+	protected ArrayList<Card> handCards;
 	
-	private int points;
+	protected int points;
 	
-	private String myName;
+	protected String myName;
 	
 	public Dummy(String name){
 		myName = name;

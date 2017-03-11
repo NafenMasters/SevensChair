@@ -21,6 +21,19 @@ public class Card {
 	}
 
 	@Override
+	public boolean equals(Object c){
+		if(c.getClass()!=this.getClass()){
+			return false;
+		}
+		Card cc = (Card) c;
+		if(cc.getNumber()==number && cc.getSuit()==suit)
+			return true;
+		else	
+			return false;
+		
+	}
+	
+	@Override
 	public String toString() {
 		String s = null;
 		switch(suit) {
