@@ -1,6 +1,7 @@
 package chair;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -33,7 +34,8 @@ public class Chair {
 	
 	private static boolean isCheating=false;
 
-	public static Game match(Player p1, Player p2){
+	//mode: 1 printchair 2 no printing
+	public static Game match(Player p1, Player p2, int mode){
 		/*
 		 * Initializations
 		 */
@@ -152,6 +154,7 @@ public class Chair {
 				
 				
 				//Print out what happened just now
+				if(mode==1)
 				printChair(p1,p2);
 				
 			
@@ -286,16 +289,19 @@ public class Chair {
 		
 	private static void printChair(Player p1,Player p2){
 
+		String[] s={" ","!"};
 		System.out.println("*********************************************");
-		System.out.print("Round #"+roundNumber+"! "+"Next Turn:"+turn+" ");
+		System.out.print("Round #"+roundNumber+"! ");
 		System.out.println("Cards left:"+d.getLeftNum());
 		System.out.print(p1.getName()+" Points:"+points1+"|");
 		System.out.print(p2.getName()+" Points:"+points2+"|");
 		System.out.println("Round Points:"+ rpoints);
 		printList(p1Cards);
+		System.out.print(s[turn-1]);
 		printList(Combo1);
 		//System.out.println(Combo1.abs());
 		//System.out.println(Combo2.abs());
+		System.out.print(s[2-turn]);
 		printList(Combo2);
 		printList(p2Cards);
 		
@@ -307,6 +313,7 @@ public class Chair {
 			System.out.println("-----");
 			return;
 		}
+		Collections.sort(cards,new CardComparator());
 		 for (Iterator<Card> iter = cards.iterator(); iter.hasNext();) {
 				  String str = iter.next().toString();
 				  System.out.print(str+" ");

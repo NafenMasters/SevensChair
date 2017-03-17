@@ -188,7 +188,7 @@ public class Combo extends ArrayList<Card> {
 		}
 		
 	//转化为能表示大小的指标数
-	public int index(int num){
+	private int index(int num){
 		if(num==1)
 			return 14;
 		if(num==2)

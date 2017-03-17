@@ -38,13 +38,13 @@ public class Card {
 		String s = null;
 		switch(suit) {
 		
-		case 1: s="h";
+		case 1: s="♥";
 		break;
-		case 2: s="s";
+		case 2: s="♠";
 		break;
-		case 3: s="d";
+		case 3: s="♦";
 		break;
-		case 4: s="c";
+		case 4: s="♣";
 		break;
 		}
 		switch(number) {
@@ -56,9 +56,9 @@ public class Card {
 			break;
 			case 1: s += "A";
 			break;
-			case 99: s="jk";
+			case 99: s="😶 ";
 			break;
-			case 100: s="JK";
+			case 100: s="😁 ";
 			break;
 			
 			default: s += Integer.toString(number);

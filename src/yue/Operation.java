@@ -97,29 +97,33 @@ public class Operation
    //Special Card sorting method to make A occurs last,then all the hand combo can be attained
    public void CardSort(Card[] handcards,int n)
 	{
-		int count=0;
-		Card temp=new Card();
-		for(int i=0;i<n-count;i++)
-		{
-			if(handcards[i].Num==1)
+	   int count=0;
+		   
+			Card temp=new Card();
+			for(int i=0;i<n-count;i++)
 			{
-				temp=handcards[i];
-				handcards[i]=handcards[n-count-1];
-				handcards[n-count-1]=temp;
-				count++;
+				if(handcards[i].Num==1)
+				{
+					temp=handcards[i];
+					handcards[i]=handcards[n-count-1];
+					handcards[n-count-1]=temp;
+					count++;
+				}
 			}
-		}
-		Card[] newcards=new Card[n-count];
-		for(int i=0;i<n-count;i++)
-		{
-			newcards[i]=handcards[i];
-		}
-		Operation set=new Operation();
-		set.Sort(newcards);
-		for(int i=0;i<n-count;i++)
-		{
-			handcards[i]=newcards[i];
-		}
+			//System.out.println(n*100+count);
+			Card[] newcards=new Card[n-count];
+			for(int i=0;i<n-count;i++)
+			{
+				newcards[i]=handcards[i];
+			}
+			Operation set=new Operation();
+			set.Sort(newcards);
+			for(int i=0;i<n-count;i++)
+			{
+				handcards[i]=newcards[i];
+			}
+	   
+		
 	}
    
    //To decide the sequence of two combo based on its score
