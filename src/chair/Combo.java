@@ -6,6 +6,8 @@ import java.util.Iterator;
 
 public class Combo extends ArrayList<Card> {
 	
+	private int abs=-1;
+	
 	//先按点数排序再按花色排序，A在最左边
 	public void sort(){
 		Collections.sort(this, new CardComparator());
@@ -29,9 +31,16 @@ public class Combo extends ArrayList<Card> {
 	 * 
 	 */
 	
+	public int abs(){
+		if(abs==-1){
+			abs=calculate_abs();
+		}
+		return abs;
+	}
+	
 	//evaluate the absolute value of this combo. If invalid return 0.
 	//TODO: 222222
-	public int abs(){
+	public int calculate_abs(){
 		if(size()==0)
 			return 0;
 		if(size()==1)

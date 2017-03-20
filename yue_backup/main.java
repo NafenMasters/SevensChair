@@ -265,38 +265,10 @@ public class main {
 		Operation set=new Operation();
 		set.OutputCombo(hc);*/
 		
-		long startTime=System.currentTimeMillis();
-		
-	
-	    		Game g=new Game();
-		g.FGame();
-	    
-		
-		long endTime=System.currentTimeMillis();
-		System.out.println(endTime-startTime);
-		
-		//Felipe f1=new Felipe();
-		//System.out.println(f1.GetOwnPoints());
-		
-		/*ArrayList <Card> c=new ArrayList<Card>();
-		Card[] card=new Card[4];
-		card[0]=new Card();
-		card[0].Input(52);
-		card[1]=new Card();
-		card[1].Input(1);
-		card[2]=new Card();
-		card[2].Input(54);
-		card[3]=new Card();
-		card[3].Input(10);
-		
-		c.add(card[0]);
-		c.add(card[1]);
-		c.add(card[2]);
-		c.add(card[3]);
-		Operation set=new Operation();
-		System.out.println(set.jokersearch(c));*/
-		
-
+		for(int i=0;i<10000;i++)
+		{		Game g=new Game();
+		g.JGame();
+		}
 	}
 	
 	

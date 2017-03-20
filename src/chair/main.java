@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import xiao.Noob;
+import yue.Ben;
 import yue.Martin;
 
 
@@ -16,7 +17,7 @@ public class main {
 		int win1 =0;
 		for(int i=0;i<1;i++){
 			p1=new Noob("Noob");
-			p2=new Martin("Martin");
+			p2=new Ben("Ben");
 			r=Chair.match(p1, p2,1);
 			r.print();
 			if(r.winner==1){

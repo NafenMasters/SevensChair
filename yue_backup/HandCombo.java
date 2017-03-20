@@ -11,10 +11,13 @@ public class HandCombo extends ArrayList<Combo>
 	
 	public void GetHandCombo(Card[] handcards, int n)
 	{
+		////////////
 		if(n==0)
 			return;
+		///////////
 		
 		Operation o=new Operation();
+		
 		o.CardSort(handcards, n);
 		
 		if(n==1)
@@ -28,7 +31,6 @@ public class HandCombo extends ArrayList<Combo>
 		{   
 			//Recycle this function till there is only one card left.
 			GetHandCombo(handcards, n-1);
-			
 			int NoC;
 			//NumberofCombos
 			
@@ -69,7 +71,7 @@ public class HandCombo extends ArrayList<Combo>
 				Combo test=new Combo();
 				test=set.Scores(testcards);
 				//When a new combo occurs, plug it into the existing list of combo.
-				if(test.Score>0)
+				if(test.Level>-0.5)
 				{
 					this.add(test);
 					
@@ -124,10 +126,10 @@ public class HandCombo extends ArrayList<Combo>
 		int length;
 		length=this.size();
 		
-
-    if(length==0)
-	return temp;
-
+		///////////////////
+		if(length==0)
+			return temp;
+		//////////////////
 		
 		temp=this.get(length-1);
 		return temp;

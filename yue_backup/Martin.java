@@ -7,7 +7,7 @@ import chair.Player;
 
 public class Martin implements Player
 {
-    ArrayList<chair.Card> handCards;
+    ArrayList<Card> handCards;
 	
 	private int points;
 	
@@ -27,6 +27,7 @@ public class Martin implements Player
 				if((c.get(j).Num==bestcombo.cards[i].Num)&&(c.get(j).suits==bestcombo.cards[i].suits))
 				{
 					c.remove(j);
+					
 					break;
 				}
 			}
@@ -49,20 +50,17 @@ public class Martin implements Player
 	    {
 	    	if(num==99)
 	    	{
-	    		input=20;
+	    		input=53;
 	    	}
 	    	else
 	    	{
-	    		input=30;
+	    		input=54;
 	    	}
 	    }
 		c2.Input(input);
 	}
 	
-	
-	
-	
-	public void combotrans(chair.Combo c1,yue.Combo c2)
+	public yue.Combo combotrans(chair.Combo c1)
 	{
 		int length;
 		length=c1.size();
@@ -73,7 +71,8 @@ public class Martin implements Player
 			this.cardtrans(c1.get(i), card[i]);
 		}
 		Operation set=new Operation();
-		c2=set.Scores(card);
+		return set.Scores(card);
+		//System.out.println(c2.Score);
 	}
 	
 	
@@ -107,9 +106,12 @@ public class Martin implements Player
 
 	@Override
 	public chair.Combo play(chair.Combo enemyCombo) {
+		//chair.Chair.printList(handCards);
+		//System.out.println("asdasdadasdasdasdasdasdad");
 		// TODO Auto-generated method stub
 		yue.Combo enemy=new yue.Combo();
-		this.combotrans(enemyCombo, enemy);
+		enemy=this.combotrans(enemyCombo);
+		//System.out.println(enemy.toString());
 		Combo c=new Combo();
 		
 		chair.Combo cc=new chair.Combo();
@@ -132,11 +134,18 @@ public class Martin implements Player
 		Combo bestcombo=new Combo();
 		bestcombo=hc.BestCombo();
 		boolean compare;
+		//System.out.println(bestcombo.Score);
 		compare=set.ComboBattle(bestcombo, enemy);
+		//System.out.println(enemy.NumberofCards);
 		if(compare)
 		{
 			this.Remove(bestcombo,handc);
-			int size=c.NumberofCards;
+			
+			///////
+			handCards=this.arrayListYueCard2ArrayListCard(handc);
+			///////
+			
+			int size=bestcombo.NumberofCards;
 			for(int j=0;j<size;j++)
 			{
 				int u;
@@ -162,11 +171,12 @@ public class Martin implements Player
 					u=5;
 				}
 				int n;
-				if(bestcombo.cards[j].Num==99)
+				
+				if(bestcombo.cards[j].Num==20)
 				{
-					n=20;
+					n=99; //////////
 				}
-				else if(bestcombo.cards[j].Num==100)
+				else if(bestcombo.cards[j].Num==30)
 				{
 					n=100;
 				}
@@ -178,7 +188,57 @@ public class Martin implements Player
 				cc.add(chaircard);
 			}
 		}
+		//System.out.println("sadsasdasfdsf");
+		//System.out.println(cc.size());
 		return cc;
+	}
+
+	public ArrayList<chair.Card> arrayListYueCard2ArrayListCard(
+			ArrayList<yue.Card> handc) {
+		ArrayList<Card> a=new ArrayList<Card>();
+		int size=handc.size();
+		for(int j=0;j<size;j++)
+		{
+			int u;
+			if(handc.get(j).suits=="Heart")
+			{
+				u=1;
+			}
+			else if(handc.get(j).suits=="Spade")
+			{
+				u=2;
+			}
+			else if(handc.get(j).suits=="Diamond")
+			{
+				u=3;
+			}
+			else if(handc.get(j).suits=="Club")
+			{
+				u=4;
+			}
+			
+			else
+			{
+				u=5;
+			}
+			int n;
+			
+			if(handc.get(j).Num==20)
+			{
+				n=99; //////////
+			}
+			else if(handc.get(j).Num==30)
+			{
+				n=100;
+			}
+			else
+			{
+				n=handc.get(j).Num;
+			}
+			chair.Card chaircard=new chair.Card(n,u);
+			a.add(chaircard);
+		}
+		return a;
 	}
 
 	@Override
@@ -196,7 +256,7 @@ public class Martin implements Player
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
-		return "Martin";
+		return myName;
 	}
 
 }

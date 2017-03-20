@@ -97,29 +97,33 @@ public class Operation
    //Special Card sorting method to make A occurs last,then all the hand combo can be attained
    public void CardSort(Card[] handcards,int n)
 	{
-		int count=0;
-		Card temp=new Card();
-		for(int i=0;i<n-count;i++)
-		{
-			if(handcards[i].Num==1)
+	   int count=0;
+		   
+			Card temp=new Card();
+			for(int i=0;i<n-count;i++)
 			{
-				temp=handcards[i];
-				handcards[i]=handcards[n-count-1];
-				handcards[n-count-1]=temp;
-				count++;
+				if(handcards[i].Num==1)
+				{
+					temp=handcards[i];
+					handcards[i]=handcards[n-count-1];
+					handcards[n-count-1]=temp;
+					count++;
+				}
 			}
-		}
-		Card[] newcards=new Card[n-count];
-		for(int i=0;i<n-count;i++)
-		{
-			newcards[i]=handcards[i];
-		}
-		Operation set=new Operation();
-		set.Sort(newcards);
-		for(int i=0;i<n-count;i++)
-		{
-			handcards[i]=newcards[i];
-		}
+			//System.out.println(n*100+count);
+			Card[] newcards=new Card[n-count];
+			for(int i=0;i<n-count;i++)
+			{
+				newcards[i]=handcards[i];
+			}
+			Operation set=new Operation();
+			set.Sort(newcards);
+			for(int i=0;i<n-count;i++)
+			{
+				handcards[i]=newcards[i];
+			}
+	   
+		
 	}
    
    //To decide the sequence of two combo based on its score
@@ -146,8 +150,8 @@ public class Operation
    
    //To calculate the score of a combo and return a combo format
    //Each combo class has its own calculation function
-   //Single: Level:0, Score:0——15, 20(small joker), 30(big joker)
-   //MixedSeries:Level:1, Score:103——127(2 cards, the smallest is "A 2", the biggest is "K A"), 156——189(3 cards), 210——250(4 cards), 265--310(5 cards), 321--369(6 cards), 378--427(7 cards)
+   //Single: Level:0, Score:0鈥斺�15, 20(small joker), 30(big joker)
+   //MixedSeries:Level:1, Score:103鈥斺�127(2 cards, the smallest is "A 2", the biggest is "K A"), 156鈥斺�189(3 cards), 210鈥斺�250(4 cards), 265--310(5 cards), 321--369(6 cards), 378--427(7 cards)
    //(2 cards)Level:2, MixedPair: 1006--1028(2 cards), HomoSeries:1103--1127(2 cards), HomoPair:1206--1230(2 cards), 1240(small joker),1260(big joker)
    //(3 cards)Level:3, MixedPair: 2009--2045(3 cards), HomoSeries:2106--2139, HomoPair:2209--2245
    //(4 cards)Level:4, MixedPair: 3012--3060(4 cards), HomoSeries:3110--3150, HomoPair:3212--3260
@@ -159,17 +163,20 @@ public class Operation
 	   Combo temp=new Combo();
 	   int len;
 	   len=c.length;
-	   if(len==0)
-	   {
-		   Combo empty= new Combo();
-		   empty.Score=-1000;
-		   empty.NumberofCards=0;
-		   return empty;
-	   }
 	   temp.NumberofCards=len;
 	   boolean SeriesDecision;
 	   boolean PairsDecision;
 	   boolean HorMS,HorMP;
+	   
+	   ////////////////////////
+	   if(len==0)
+	   {
+		   Combo e = new Combo();
+		   e.Score=-1000;
+		   return e;
+	   }
+	   ///////////////////////
+	   
 	   
 	   //Deal with the single case
 	   if(len==1)
@@ -324,7 +331,6 @@ public class Operation
 			  newcombo.Level=newcombo.NumberofCards;
 			  newcombo.Score=newcombo.NumberofCards*15+1000+1000*(newcombo.Level-2)+200;
 			  newcombo.Category="HomogeneousPair";
-			  //System.out.println(c.length);
 			  for(int t=0;t<newcombo.NumberofCards;t++)
 			  {
 				  newcombo.cards[t]=new Card();
@@ -333,11 +339,10 @@ public class Operation
 			  
 			  if(newcombo.Score>temp.Score)
 			  {
-				//System.out.println(newcard.length);
-				//if(newcard[0].Num<18)
-				 // {
+				if(newcard[0].Num<18)
+				  {
 					temp=newcombo;
-					//}
+					}
 			  }
 		  }
 		  
@@ -476,47 +481,5 @@ public class Operation
 	   Collections.sort(c,new CardComparator());
    }
    
-   //return the number of small joker in hand
-   public int smalljokersearch(ArrayList <Card> c)
-   {
-	   int num;
-	   num=0;
-	   int length=c.size();
-	   for(int i=0;i<length;i++)
-	   {
-		   if(c.get(i).Num==20)
-		   {
-			   num++;
-		   }
-	   }
-	   return num;
-   }
-   
-   public int bigjokersearch(ArrayList <Card> c)
-   {
-	   int num;
-	   num=0;
-	   int length=c.size();
-	   for(int i=0;i<length;i++)
-	   {
-		   if(c.get(i).Num==30)
-		   {
-			   num++;
-		   }
-	   }
-	   return num;
-   }
-   
-   public boolean jokersearch(ArrayList <Card> c)
-   {
-	   boolean decision;
-	   decision=false;
-	   
-	   if(this.bigjokersearch(c)>0||this.smalljokersearch(c)>0)
-	   {
-		   decision=true;
-	   }
-	   return decision;
-   }
    
 }

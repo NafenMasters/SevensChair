@@ -240,7 +240,6 @@ public class Combo {
 		   }
 	   System.out.print("\n");
 	   }
-	
 	public void Output2(ArrayList<Card> c)
 	   {
 		   int n;
