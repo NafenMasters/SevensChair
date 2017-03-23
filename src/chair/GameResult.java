@@ -1,6 +1,6 @@
 package chair;
 
-public class Game{
+public class GameResult{
 	Player p1,p2;
 	
 	int winner;
@@ -10,7 +10,7 @@ public class Game{
 	int p1Jokers;
 	int p2Jokers;
 	boolean isCheating;
-	public Game(Player v1, Player v2){
+	public GameResult(Player v1, Player v2){
 		p1=v1;
 		p2=v2;
 	}

@@ -35,7 +35,7 @@ public class Chair {
 	private static boolean isCheating=false;
 
 	//mode: 1 printchair 2 no printing
-	public static Game match(Player p1, Player p2, int mode){
+	public static GameResult match(Player p1, Player p2, int mode){
 		/*
 		 * Initializations
 		 */
@@ -258,7 +258,7 @@ public class Chair {
 			 
 		}
 		
-		Game g = new Game(p1,p2);
+		GameResult g = new GameResult(p1,p2);
 		g.setResult(winner,roundNumber,points1,points2,jokers1,jokers2,isCheating);
 		return g;
 	}

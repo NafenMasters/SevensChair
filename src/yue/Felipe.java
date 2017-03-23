@@ -287,7 +287,9 @@ public class Felipe {
 				        if(compare2)
 				        {
 				        	int combosize=test.size();
-				    	    for(int i=0;i<combosize;i++)
+				    	   c=secondbestcombo;
+				    	   this.Remove(c);
+				        	/* for(int i=0;i<combosize;i++)
 				    	    {
 				    	    	boolean compare3;
 				    		    compare3=set.ComboBattle(test.get(i), enemycombo);
@@ -299,7 +301,7 @@ public class Felipe {
 				    		    	this.Remove(c);
 				    			    break;
 				    		    }
-				    	    }
+				    	    }*/
 				        }
 				    
 				        for(int i=0;i<bestcombo.NumberofCards;i++)
